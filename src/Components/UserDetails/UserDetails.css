@@ -1,0 +1,17 @@
+.list-group-item {
+    padding: 10px 0 0 0;
+}
+
+.cardIcons {
+    margin-bottom: 3px;
+}
+
+.card-img-top {
+    max-height: 300px;
+}
+
+#card {
+    box-shadow: 2px 2px 5px 8px rgb(12, 12, 12);
+    margin-top: 20px;
+    color: #212529;
+}

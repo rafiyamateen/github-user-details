@@ -13,8 +13,6 @@ class App extends React.Component {
     this.state = {
       username: '',
       loading: false,
-      id: '',
-      imgSrc: '',
       details: [],
       error: false,
       alert: false
@@ -30,13 +28,11 @@ class App extends React.Component {
         .then((response) => {
           this.setState({
             loading: false,
-            id: response.data.id,
             details: {
               imgSrc: response.data.avatar_url || 'Not available',
               name: response.data.name || 'Not available',
               bio: response.data.bio || 'Not available',
               created_at: response.data.created_at || 'Not available',
-              email: response.data.email || 'Not available',
               html_url: response.data.html_url || 'Not available',
               location: response.data.location || 'Not available',
               public_repos: response.data.public_repos || 'Not available'
@@ -47,15 +43,15 @@ class App extends React.Component {
           this.setState({
             error: true,
             loading: false,
-            id: ''
           })
+          document.getElementById('input').focus();
         })
     }
     else {
       this.setState({
         alert: true,
-        id: ''
       })
+      document.getElementById('input').focus();
     }
   }
   onchange = (e) => {
@@ -65,9 +61,6 @@ class App extends React.Component {
       error: false,
       loading: false
     })
-  }
-  componentDidUpdate() {
-    document.getElementById('input').focus();
   }
   render() {
     return <>
@@ -82,7 +75,7 @@ class App extends React.Component {
           <>
             {this.state.error ? <NotFound /> :
               <>
-                {this.state.id ?
+                {this.state.details.imgSrc ?
                   <UserDetails details={this.state.details} /> : null}
               </>}
           </>}

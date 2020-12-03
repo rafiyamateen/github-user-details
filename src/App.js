@@ -43,6 +43,7 @@ class App extends React.Component {
           this.setState({
             error: true,
             loading: false,
+            details: [],
           })
           document.getElementById('input').focus();
         })
@@ -50,6 +51,7 @@ class App extends React.Component {
     else {
       this.setState({
         alert: true,
+        details: [],
       })
       document.getElementById('input').focus();
     }
@@ -58,8 +60,7 @@ class App extends React.Component {
     this.setState({
       username: e.target.value,
       alert: false,
-      error: false,
-      loading: false
+      error: false
     })
   }
   render() {
